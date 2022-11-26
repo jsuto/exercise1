@@ -1,0 +1,4 @@
+The problem: Uppercase the text in 1.txt, then count the lines starting with a number
+
+sed -i 's/.*/\U&/g' 1.txt
+grep -c '^[0-9]' 1.txt
