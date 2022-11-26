@@ -1,0 +1,32 @@
+node {
+    def repo_dir_name = 'exercise1'
+    def image_name = "sutoj/test"
+    def image_tag = "0.3"
+    def registry_url = "https://registry.hub.docker.com"
+
+    stage('Clone repo') {
+        checkout([$class: 'GitSCM',
+                  branches: [[name: 'master']],
+                  extensions: [[$class: 'CheckoutOption', timeout: 5], [$class: 'RelativeTargetDirectory', relativeTargetDir: repo_dir_name]],
+                  userRemoteConfigs: [[credentialsId: 'github', url: "ssh://git@github.com:jsuto/${repo_dir_name}.git"]]
+                 ])
+    }
+
+    stage('Build image') {
+        dir("${repo_dir_name}/01") {
+            app = docker.build(image_name)
+        }
+    }
+
+    stage('Push image') {
+        docker.withRegistry(registry_url, 'docker-hub-credentials') {
+            app.push(image_tag)
+        }
+    }
+
+    stage('Create statefulset') {
+        dir(repo_dir_name) {
+            sh "kubectl apply -f 02"
+        }
+    }
+}
