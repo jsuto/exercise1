@@ -1,0 +1,17 @@
+$ trivy image sutoj/test:0.3
+2022-11-26T15:06:01.532+0100	INFO	Need to update DB
+2022-11-26T15:06:01.532+0100	INFO	DB Repository: ghcr.io/aquasecurity/trivy-db
+2022-11-26T15:06:01.532+0100	INFO	Downloading DB...
+35.35 MiB / 35.35 MiB [-------------------------------------------------------------------------------------------------------------------------------------------] 100.00% 12.08 MiB p/s 3.1s
+2022-11-26T15:06:05.537+0100	INFO	Vulnerability scanning is enabled
+2022-11-26T15:06:05.537+0100	INFO	Secret scanning is enabled
+2022-11-26T15:06:05.537+0100	INFO	If your scanning is slow, please try '--security-checks vuln' to disable secret scanning
+2022-11-26T15:06:05.537+0100	INFO	Please see also https://aquasecurity.github.io/trivy/v0.34/docs/secret/scanning/#recommendation for faster secret detection
+2022-11-26T15:06:05.743+0100	INFO	Detected OS: alpine
+2022-11-26T15:06:05.743+0100	INFO	This OS version is not on the EOL list: alpine 3.17
+2022-11-26T15:06:05.743+0100	INFO	Detecting Alpine vulnerabilities...
+2022-11-26T15:06:05.744+0100	INFO	Number of language-specific files: 0
+
+sutoj/test:0.3 (alpine 3.17.0)
+
+Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
