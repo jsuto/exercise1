@@ -19,6 +19,13 @@ spec:
       containers:
       - name: nginx
         image: sutoj/test:0.3
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
+          limits:
+            cpu: "750m"
+            memory: "512Mi"
         ports:
         - containerPort: 80
           name: web
